@@ -73,10 +73,10 @@ async function run() {
     core.info(`latest release ${latestRelease ?? 'first release'}`);
     core.endGroup();
 
-    // pass an object rather than a string to make sure that it gets included in the build
     const bumper = new Bumper(process.cwd()).loadPreset('angular');
     const recommendation = await bumper.bump();
     core.info(`conventional release type ${recommendation.releaseType}`);
+    core.debug(`recommendation: ${JSON.stringify(recommendation, null, 2)}`);
 
     const prerelease = core.getBooleanInput('prerelease');
     const newVersion = getNewVersion(

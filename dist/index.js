@@ -25577,6 +25577,7 @@ async function run() {
     const bumper = new Bumper(process.cwd()).loadPreset("angular");
     const recommendation = await bumper.bump();
     import_core.default.info(`conventional release type ${recommendation.releaseType}`);
+    import_core.default.debug(`recommendation: ${JSON.stringify(recommendation, null, 2)}`);
     const prerelease = import_core.default.getBooleanInput("prerelease");
     const newVersion = getNewVersion(
       latestRelease,
